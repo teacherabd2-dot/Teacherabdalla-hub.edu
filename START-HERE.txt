@@ -1,0 +1,93 @@
+==========================================================
+ YOUR ENGLISH CLASSROOM — READ THIS FIRST (2 minutes)
+==========================================================
+
+You downloaded a ZIP. Inside there is NO "index.html" file.
+THAT IS NORMAL AND CORRECT — nothing is missing.
+
+  ➜ This is a Next.js website (the same technology used by
+    Nike, TikTok and Notion). Its home page is a code file:
+
+        src/app/page.tsx      <-- this IS your "index" page
+
+    You never need to open it. The hosting service turns it
+    into your website automatically.
+
+----------------------------------------------------------
+ WHAT TO DO (no GitHub, no commands, all in the browser)
+----------------------------------------------------------
+
+STEP 1 — Free database (about 4 minutes)
+  1. Open  https://neon.com  and sign up (use "Continue with Google").
+  2. Click "New Project", name it: english-classroom, then Create.
+  3. Copy the connection string that looks like:
+       postgresql://neondb_owner:XXXX@ep-xxxx.aws.neon.tech/neondb?sslmode=require
+     Paste it into a note. Keep it private.
+
+STEP 2 — Free website (about 5 minutes)
+  1. Open  https://vercel.com/drop  and sign up.
+  2. DRAG THIS ZIP FILE (english-classroom-hub-source.zip) onto that page.
+     ⚠️ Drag the .zip itself. Do NOT unzip it first.
+  3. Type a project name, for example: english-classroom
+  4. Click Deploy and wait until it says Ready.
+  5. Copy your green address, for example:
+       https://english-classroom.vercel.app
+
+STEP 3 — Connect the database (about 3 minutes)
+  1. In Vercel open your project → Settings → Environment Variables.
+  2. Click Add New:
+       Key   : DATABASE_URL
+       Value : the Neon connection string from STEP 1
+     Leave Production / Preview / Development ticked. Save.
+  3. Go to the Deployments tab → the ⋮ menu → Redeploy.
+
+STEP 4 — Create your tables (one click)
+  Open this address in your browser (use YOUR address):
+       https://your-site.vercel.app/api/setup
+  You should see a green ✅ "Your classroom database is ready".
+  Click "Go to my classroom".
+
+STEP 5 — Sign in as teacher
+  1. On your site click "Teacher Sign In" (top-right).
+  2. Passcode:  teacher123
+  3. Open Settings and change it to your own secret passcode.
+  You can now Add / Edit / Publish / Delete activities from any device.
+
+STEP 6 — Point your QR code at the new site
+  Share Hub → Links & QR Code → paste your Vercel address into
+  "Custom Web Domain" → Save. Your QR code now opens the new site.
+
+----------------------------------------------------------
+ FILES IN THIS FOLDER (so you know nothing is missing)
+----------------------------------------------------------
+  src/app/page.tsx ........ your home page (the "index")
+  src/app/layout.tsx ...... page frame + title
+  src/app/api/... ......... the small server endpoints
+  src/components/ ......... the screens you see (cards, modals)
+  src/db/ ................. database tables + starter activities
+  package.json ............ dependency list (like a parts list)
+  vercel.json ............. tells Vercel: build this as Next.js
+  DEPLOY-NO-GITHUB.md ..... the same steps, with screenshots-level detail
+  README-DEPLOY.md ........ advanced options (GitHub, terminal)
+
+----------------------------------------------------------
+ COMMON QUESTIONS
+----------------------------------------------------------
+Q: Where is index.html?
+A: There isn't one. Next.js builds pages from src/app/page.tsx.
+   Vercel creates the real HTML for you when it deploys.
+
+Q: Do I need to install anything?
+A: No. Vercel installs and builds everything on its servers.
+
+Q: Do I need GitHub?
+A: No. Vercel Drop works with the ZIP.
+
+Q: Vercel asked "which page should load at your site's root"?
+A: That only happens if the folder is treated as a plain static
+   site. Make sure you uploaded THIS zip (it contains
+   package.json and vercel.json), not a folder of HTML files.
+
+Q: Nothing happens when I click /api/setup?
+A: DATABASE_URL is missing or the redeploy has not finished yet.
+   Repeat STEP 3, wait for "Ready", then reload the page.
